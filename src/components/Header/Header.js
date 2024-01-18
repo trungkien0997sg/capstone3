@@ -8,7 +8,7 @@ export default class Header extends Component {
         <div className="logo">
           <span>TruKie</span>
         </div>
-        <div className="links d-flex flex-column">
+        <div className="links d-flex flex-column flex-md-row">
           <NavLink className="btn btn-link mx-1" to="/">
             Trang chủ
           </NavLink>
