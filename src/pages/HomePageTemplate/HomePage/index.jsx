@@ -34,7 +34,7 @@ export default function HomePage() {
     dispatch(actFetchRap());
     dispatch(actFetchBanner());
     dispatch(actFetchListData());
-    dispatch(actFetchLichChieuData(dataRap.maHeThongRap));
+    dispatch(actFetchLichChieuData());
   }, [dispatch]);
 
   // const cinemaSystems = dataRap[0];
@@ -64,6 +64,10 @@ export default function HomePage() {
     if (dataRap && dataRap.length > 0) {
       return dataRap.map((rap) => <HeThongRap rap={rap} />);
     }
+  };
+
+  const renderLichChieu = (id) => {
+    if (loadingLich) return <div>Loading..........</div>;
   };
 
   return (

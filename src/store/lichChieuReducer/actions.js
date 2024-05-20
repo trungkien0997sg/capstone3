@@ -6,10 +6,11 @@ export const actFetchLichChieuData = (id) => {
 
     api
       .get(
-        `QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01&maHeThongRap=${id}`
+        `QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${id}&maNhom=GP01`
       )
       .then((result) => {
         dispatch(actLichChieuSuccess(result.data.content));
+        console.log(result.data.content);
       })
       .catch((error) => {
         dispatch(actLichChieuFailed(error));
