@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import HomeTemplate from "../pages/HomePageTemplate";
 import HomePage from "../pages/HomePageTemplate/HomePage";
 import AboutPage from "../pages/HomePageTemplate/AboutPage";
+import DetailMovie from "../pages/HomePageTemplate/DetailMovie/index.jsx";
 const routes = [
   {
     path: "",
@@ -9,6 +10,7 @@ const routes = [
     nested: [
       { path: "", element: HomePage },
       { path: "about", element: AboutPage },
+      { path: "detail/:id", element: DetailMovie },
     ],
   },
 ];
