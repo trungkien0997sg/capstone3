@@ -37,9 +37,6 @@ export default function HomePage() {
     dispatch(actFetchLichChieuData());
   }, [dispatch]);
 
-  // const cinemaSystems = dataRap[0];
-  // console.log("cinemaSystems: ", cinemaSystems);
-
   const renderListMovie = () => {
     if (loading) return <div>Loading...</div>;
 
@@ -72,7 +69,7 @@ export default function HomePage() {
 
   return (
     <div className="">
-      <div className="" style={{ height: "d-lg-90vh" }}>
+      <div className="" style={{ height: "90vh" }}>
         {renderBanner()}
       </div>
       <div className="container">
@@ -91,52 +88,6 @@ export default function HomePage() {
           <div className="col-11 cinema__schedule">
             <LichChieuTheoRap />
           </div>
-
-          {/* <Tab.Container id="left-tabs-example" defaultActiveKey="BHDStar">
-            <Row>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  {dataLich &&
-                    dataLich.map((system) => {
-                      return (
-                        <Nav.Item>
-                          <Nav.Link eventKey={system.maHeThongRap}>
-                            <img
-                              src={system.logo}
-                              style={{ width: 120, height: 120 }}
-                            />
-                          </Nav.Link>
-                        </Nav.Item>
-                      );
-                    })}
-                </Nav>
-              </Col>
-              <Col sm={9}>
-                <Tab.Content>
-                  {dataLich &&
-                    dataLich.map((system) => {
-                      return (
-                        <Tab.Pane eventKey={system.maHeThongRap}>
-                          {system.cumRapChieu.map((item) => {
-                            return (
-                              <div>
-                                {item.tenCumRap}
-                                <Row>
-                                  {item.lichChieuPhim.map((item, index) => {
-                                    return <Col sm={2}></Col>;
-                                  })}
-                                </Row>
-                              </div>
-                            );
-                          })}
-                          {system.tenHeThongRap}
-                        </Tab.Pane>
-                      );
-                    })}
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Tab.Container> */}
         </div>
       </div>
     </div>
