@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { actFetchListData } from "../../../store/listMovieReducer/actions";
 import { actFetchBanner } from "../../../store/bannerReducer/actions";
 import { actFetchRap } from "../../../store/heThongRapReducer/action";
+import { actFetchLichChieuData } from "../../../store/lichChieuReducer/actions";
+import { Button, Col, Nav, Row, Tab } from "react-bootstrap";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -24,17 +26,27 @@ export default function HomePage() {
     (state) => state.heThongRapReducer
   );
 
+  const { loadingLich, dataLich } = useSelector(
+    (state) => state.lichChieuReducer
+  );
+
   useEffect(() => {
     dispatch(actFetchRap());
     dispatch(actFetchBanner());
     dispatch(actFetchListData());
+    dispatch(actFetchLichChieuData(dataRap.maHeThongRap));
   }, [dispatch]);
+
+  // const cinemaSystems = dataRap[0];
+  // console.log("cinemaSystems: ", cinemaSystems);
 
   const renderListMovie = () => {
     if (loading) return <div>Loading...</div>;
 
     if (data && data.length > 0) {
-      return data.map((movie) => <ListMovie movie={movie} />);
+      return data.map((movie) => (
+        <ListMovie key={movie.maPhim} movie={movie} />
+      ));
     }
   };
 
@@ -64,16 +76,63 @@ export default function HomePage() {
           DANH SÁCH PHIM
         </h2>
         <div className="row">{renderListMovie()}</div>
+
         <div className="pt-3 cinema">
           <h2 className="title text-center text-decoration-underline py-2">
             HỆ THỐNG RẠP
           </h2>
-          <div className="row cinema__logo d-flex flex-column">
-            <div className="col-1">{renderIconRap()}</div>
+          <div className=" col-1 cinema__logo ">
+            <div className="">{renderIconRap()}</div>
           </div>
           <div className="col-11 cinema__schedule">
             <LichChieuTheoRap />
           </div>
+
+          {/* <Tab.Container id="left-tabs-example" defaultActiveKey="BHDStar">
+            <Row>
+              <Col sm={3}>
+                <Nav variant="pills" className="flex-column">
+                  {dataLich &&
+                    dataLich.map((system) => {
+                      return (
+                        <Nav.Item>
+                          <Nav.Link eventKey={system.maHeThongRap}>
+                            <img
+                              src={system.logo}
+                              style={{ width: 120, height: 120 }}
+                            />
+                          </Nav.Link>
+                        </Nav.Item>
+                      );
+                    })}
+                </Nav>
+              </Col>
+              <Col sm={9}>
+                <Tab.Content>
+                  {dataLich &&
+                    dataLich.map((system) => {
+                      return (
+                        <Tab.Pane eventKey={system.maHeThongRap}>
+                          {system.cumRapChieu.map((item) => {
+                            return (
+                              <div>
+                                {item.tenCumRap}
+                                <Row>
+                                  {item.lichChieuPhim.map((item, index) => {
+                                    return <Col sm={2}></Col>;
+                                  })}
+                                </Row>
+                              </div>
+                            );
+                          })}
+                          {system.tenHeThongRap}
+                        </Tab.Pane>
+                      );
+                    })}
+                </Tab.Content>
+              </Col>
+            </Row>
+          </Tab.Container> */}
         </div>
       </div>
     </div>
