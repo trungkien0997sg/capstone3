@@ -3,6 +3,8 @@ import HomeTemplate from "../pages/HomePageTemplate";
 import HomePage from "../pages/HomePageTemplate/HomePage";
 import AboutPage from "../pages/HomePageTemplate/AboutPage";
 import DetailMovie from "../pages/HomePageTemplate/DetailMovie/index.jsx";
+import AuthPageTemplate from "../pages/AuthTemplate/index.jsx";
+import LoginPage from "../pages/AuthTemplate/LoginPage/index.jsx";
 const routes = [
   {
     path: "",
@@ -12,6 +14,11 @@ const routes = [
       { path: "about", element: AboutPage },
       { path: "detail/:id", element: DetailMovie },
     ],
+  },
+  {
+    path: "",
+    element: AuthPageTemplate,
+    nested: [{ path: "/login", element: LoginPage }],
   },
 ];
 
