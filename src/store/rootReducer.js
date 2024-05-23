@@ -4,6 +4,7 @@ import bannerReducer from "./bannerReducer/bannerReducer";
 import heThongRapReducer from "./heThongRapReducer/heThongRapReducer";
 import movieDetailReducer from "./movieDetailReducer/movieDetailReducer";
 import lichChieuReducer from "./lichChieuReducer/lichChieuReducer";
+import userReducer from "./userReducer/userReducer";
 
 const rootReducer = combineReducers({
   // key: value
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   heThongRapReducer,
   movieDetailReducer,
   lichChieuReducer,
+  userReducer,
 });
 
 export default rootReducer;
